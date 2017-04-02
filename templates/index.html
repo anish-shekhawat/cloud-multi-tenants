@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+{% block body %} 
+
+<div class="login">
+	<div class="login-screen">
+		<div class="app-title">
+			<h1>Project Login</h1>
+			{% if session['logged_in'] %}
+			<h3>Welcome Admin!</h3>
+			<input value="Log out" class="btn btn-primary btn-large btn-block" >
+			{% endif %}
+		</div>
+	</div>
+</div>
+ 
+{% endblock %}
