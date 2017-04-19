@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "flash.html" %}
+    <div class="project-name">
+        <h1>{{ proj['name'] }}</h1>
+    </div>
+
+        <h3>Project Description: </h3>
+        <p class="project-description">{{ proj['description'] }}</p>
+        <form action="/invite/{{proj['_id']}}" method="POST" name="InviteUsers" id="invite-form">
+            <div class="form-group invite-form">
+                <label for="inviteusers">Select user to invite</label>
+                {{ form.inviteusers(class_="form-control") }}
+            </div>
+            <button type="submit" id="invite">Invite</button>
+            <a href="#" class="btn btn-default" id="invite"> Invite</a>
+        </form>
+{% endblock %}

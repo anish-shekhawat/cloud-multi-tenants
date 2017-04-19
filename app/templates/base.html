@@ -11,10 +11,11 @@
         <title>Multi-Tenancy CS268</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="static/css/simple-sidebar.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link href="/static/css/simple-sidebar.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,26 +30,43 @@
         <div id="wrapper" class="toggled">
 
             <!-- Sidebar -->
-            <div id="sidebar-wrapper">
+            <div id="sidebar-wrapper" class="custom">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                        <a href="#">
-                            Start Bootstrap
+                        <a href="/">
+                            <i class="fa fa-tasks" aria-hidden="true" ></i> Management Console
                         </a>
                     </li>
-                    <li>
-                        <a href="#">Dashboard</a>
+                    <li id="welcome">Welcome,</li>
+                    <li id="user" style="">{{ current_user.name }}</li>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Create a new Project</a>
+                    <li id="clickme">
+                        <a href="#">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                Projects
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </a>
                     </li>
-                    <li>
-                        <a href="#">Projects</a>
-                    </li>
-                </ul>
-            </div>
+                    <div id="drop">
+                        {% for project in projects %}
+                            <li>
+                                <a href="/project/{{project[0]}}">{{ project[1] }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+              </ul>
+          </div>
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
+            <div class="row">
+                <a href="/logout" class="btn btn-default row" id="logout">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    Log Out
+                </a>
+            </div>
             <div id="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container-fluid row">
                     <div class="row">
                         {% block content %}
                         {% endblock %}
@@ -61,10 +79,25 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="static/js/jquery.js"></script>
-
+        <script src="/static/js/jquery.js"></script>
+        <script src="https://use.fontawesome.com/66a53a2319.js"></script>
+            <!-- Menu Toggle Script -->
+        <script>
+            $( "#clickme" ).click(function() {
+                $( "#drop" ).toggle( "slow", function() {
+                // Animation complete.
+                });
+            });
+        </script>
+        <script>
+            $( "a#invite" ).click(function() {
+                $("div.invite-form").toggle();
+                $("a#invite").toggle();
+                $( ":button#invite" ).toggle();
+            });
+        </script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="static/js/bootstrap.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
 
     </body>
 </html>

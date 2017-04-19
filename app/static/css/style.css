@@ -28,7 +28,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #2a3f54;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -42,12 +42,105 @@
   background: #43A047;
 }
 body.login {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: #2a3f54; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #2a3f54, #719bc4);
+  background: -moz-linear-gradient(right, #2a3f54, #719bc4);
+  background: -o-linear-gradient(right, #2a3f54, #719bc4);
+  background: linear-gradient(to left, #2a3f54, #719bc4);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#sidebar-wrapper.custom {
+  background-color: #2a3f54;
+  color: white;
+  width: 200px !important;
+}
+.sidebar-nav,
+.sidebar-brand {
+  color: white;
+}
+.custom a {
+  font-size: 16px;
+  color: #e8e7e7;
+}
+.fa.fa-tasks {
+  margin-left: -32px;
+  margin-right: 5px;
+}
+#welcome {
+  font-size: smaller;
+  margin-left: 15px;
+  color: #e8e7e7;
+}
+#user {
+  margin-top: -20px;
+  margin-left: 15px;
+  font-size: large;
+  color: white;
+}
+#menu-toggle {
+  margin-left: 20px;
+  font-size: small;
+  margin-top: 12px;
+}
+#clickme {
+  margin-top: 10px;
+}
+.fa.fa-pencil-square-o {
+  margin-left: -20px;
+  padding-right: 10px;
+}
+.fa.fa-caret-down {
+  padding-left: 40px;
+}
+#drop {
+  color: white;
+  display: none;
+}
+#logout {
+  border: 0;
+  float: right;
+  font-size: 16px;
+  margin-right: 5%;
+  border-width: 0;
+  border-radius: 0;
+  background-color: inherit;
+  font-weight: 600;
+  color: #9697A4;
+}
+#invite {
+  border-radius: 0;
+  border: 0;
+  background-color: rgba(255,255,255,0.2);
+  margin-top: 30px;
+  line-height: 2.5;
+  padding: 6px 35px;
+  color: white;
+  background-color: #2a3f54;
+}
+button#invite{
+  display:none;
+}
+.project-description {
+  width: 70%;
+  background-color: #eee;
+  padding: 1%;
+  color: black;
+  margin-right: 40;
+}
+h2.project-description {
+  border-color: black;
+  background-color: white;
+  padding: 10;
+  font-size: medium;
+  color: #969799;
+  margin-bottom: 3;
+  margin-top: 45;
+}
+.invite-form {
+  width: 50%;
+  margin-top: 50px;
+  display: none;
 }
