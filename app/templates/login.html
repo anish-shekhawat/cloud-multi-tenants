@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Multi-Tenancy CS268</title>
+        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="static/css/bootstrap.css">
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body class="login">
+        <div class="login-page">
+            {% include "flash.html" %}
+            <div class="form">
+                <form action="" method="POST" name="form" class="login-form">
+                        {{ form.hidden_tag() }}
+                        {{ form.username(placeholder="Username") }}
+                        {{ form.password(placeholder="Password") }}
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
