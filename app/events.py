@@ -1,7 +1,7 @@
 from flask import session
 from flask_socketio import emit, join_room, leave_room
 from app import socketio
-from flask.ext.login import current_user
+from flask_login import current_user
 
 @socketio.on('connect')
 def invited_connect():

@@ -1,7 +1,7 @@
 from app import app, lm
 from flask import request, redirect, render_template, url_for, flash
-from flask.ext.login import login_user, logout_user, login_required, current_user
-from flask.ext.socketio import emit
+from flask_login import login_user, logout_user, login_required, current_user
+from flask_socketio import emit
 from app import socketio
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
@@ -88,10 +88,24 @@ def invite(projectid):
     result = app.config['USERS_COLLECTION'].find_one({'$and': [{"_id": current_user.username}, {'$or': [{'role': 'admin'}, {'$and':[{'role': 'manager'}, {'projects': int(projectid)}]}]}]})
     if result == None:
         flash("You don't have permission to invite others to this project!", category='error')
+    inviter = app.config['USERS_COLLECTION'].find_one({"_id": current_user.username})
+    result = app.config['USERS_COLLECTION'].find_one({"_id": username})
+    if result['department'] != inviter['department']:
+        flash("You can't invite someone from other department to this project!", category='error')
         return redirect(url_for("project", projectid=projectid))
+    if result['country'] != inviter['country']:
+        flash("You can't invite someone from other country office to this project!", category='error')
+        return redirect(url_for("project", projectid=projectid))
+
+    #Add project ID to user document in database
     app.config['USERS_COLLECTION'].find_one_and_update({ '_id': username }, {'$addToSet': {'projects': int(projectid)}})
     flash("User invited successfully!", category='success')
-    socketio.emit('invited', {'data': {'invited', projectid}}, room = 'user_' + username)
+
+    #Get project name
+    project = app.config['PROJECTS_COLLECTION'].find_one({"_id": int(projectid)})
+
+    #Tranmit project name over websocket
+    socketio.emit('invited', {'msg': project['name']}, room = 'user_' + username)
     return redirect(url_for("project", projectid=projectid))
 
 @lm.user_loader
