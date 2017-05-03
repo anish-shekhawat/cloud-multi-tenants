@@ -53,6 +53,7 @@ body.login {
 }
 
 #sidebar-wrapper.custom {
+  overflow-x: hidden;
   background-color: #2a3f54;
   color: white;
   width: 200px !important;
@@ -156,4 +157,11 @@ h2.project-description {
   background-color: white;
   color: black;
 }
-
+#remember_me {
+  float: left;
+  width: 5%;
+}
+#remember {
+  float:left;
+  margin-bottom: 10px;
+}

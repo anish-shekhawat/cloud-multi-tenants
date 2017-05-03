@@ -16,6 +16,11 @@
                         {{ form.hidden_tag() }}
                         {{ form.username(placeholder="Username") }}
                         {{ form.password(placeholder="Password") }}
+                        <div class="checkbox">
+                                <label id="remember">
+                                    {{ form.remember_me }} Remember Me
+                                </label>
+                        </div>
                         <button type="submit">Login</button>
                     </div>
                 </form>

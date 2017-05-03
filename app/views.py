@@ -22,7 +22,7 @@ def login():
         user = app.config['USERS_COLLECTION'].find_one({"_id": form.username.data})
         if user and User.validate_login(user['password'], form.password.data):
             user_obj = User(user['_id'], user['name'])
-            login_user(user_obj)
+            login_user(user_obj, form.remember_me.data)
             flash("Logged in successfully!", category='success')
             return redirect(request.args.get("next") or url_for("home"))
         flash("Wrong username or password!", category='error')

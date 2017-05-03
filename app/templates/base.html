@@ -91,7 +91,7 @@
                 var socket = io.connect(conn_path);
                 socket.on('invited', function(msg) {
                     console.log(msg.msg);
-                    $('.notification-div').notify('You have been invited to ' + msg.msg, success, {position: 'right'});
+                    $('.notification-div').notify('You have been invited to ' + msg.msg, "success", {position: 'right'});
                 });
             });
         </script>
