@@ -9,3 +9,4 @@ ipython==3.0.0
 itsdangerous==0.24
 pymongo==2.8
 wsgiref==0.1.2
+Flask-SocketIO==2.8.6

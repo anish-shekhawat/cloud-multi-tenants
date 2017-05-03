@@ -1,11 +1,12 @@
 from flask import Flask
 from flask.ext.login import LoginManager
-
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.config.from_object('config')
 lm = LoginManager()
 lm.init_app(app)
+socketio = SocketIO(app)
 lm.login_view = 'login'
 app.config['COUNTER_COLLECTION'].find_one_and_update(
         { '_id': "projectid" },
@@ -13,4 +14,4 @@ app.config['COUNTER_COLLECTION'].find_one_and_update(
         upsert= True
     )
 
-from app import views
+from app import views, events

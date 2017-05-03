@@ -144,3 +144,16 @@ h2.project-description {
   margin-top: 50px;
   display: none;
 }
+#create-submit {
+  background-color: #2a3f54;
+  width: 100px;
+  height: 50px;
+}
+.form-group {
+  max-width: 60%;
+}
+#menu-toggle {
+  background-color: white;
+  color: black;
+}
+

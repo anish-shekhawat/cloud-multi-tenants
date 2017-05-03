@@ -10,8 +10,8 @@
         </div>
         <div class="form-group">
             <label for="projectdescription">Project Description</label>
-            {{ form.projectdescription(placeholder="Project Description", class_="form-control") }}
+            {{ form.projectdescription(placeholder="Project Description", rows=5, class_="form-control") }}
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" id="create-submit" class="btn btn-primary">Submit</button>
     </form>
 {% endblock %}

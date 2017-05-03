@@ -1,6 +1,8 @@
 from app import app, lm
 from flask import request, redirect, render_template, url_for, flash
 from flask.ext.login import login_user, logout_user, login_required, current_user
+from flask.ext.socketio import emit
+from app import socketio
 from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 from .forms import LoginForm, ProjectForm, InviteForm
@@ -89,6 +91,7 @@ def invite(projectid):
         return redirect(url_for("project", projectid=projectid))
     app.config['USERS_COLLECTION'].find_one_and_update({ '_id': username }, {'$addToSet': {'projects': int(projectid)}})
     flash("User invited successfully!", category='success')
+    socketio.emit('invited', {'data': {'invited', projectid}}, room = 'user_' + username)
     return redirect(url_for("project", projectid=projectid))
 
 @lm.user_loader

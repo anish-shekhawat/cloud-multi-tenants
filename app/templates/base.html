@@ -39,7 +39,7 @@
                     </li>
                     <li id="welcome">Welcome,</li>
                     <li id="user" style="">{{ current_user.name }}</li>
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Create a new Project</a>
+                    <a href="/create" class="btn btn-default" id="menu-toggle">Create a new Project</a>
                     <li id="clickme">
                         <a href="#">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -60,6 +60,7 @@
 
             <!-- Page Content -->
             <div class="row">
+                You have been invited to <b id="notification"></b> project! <a href="javascript:window.location.href=window.location.href">Refresh</a> to view project
                 <a href="/logout" class="btn btn-default row" id="logout">
                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                     Log Out
@@ -80,8 +81,18 @@
 
         <!-- jQuery -->
         <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/socket.io.min.js"></script>
         <script src="https://use.fontawesome.com/66a53a2319.js"></script>
             <!-- Menu Toggle Script -->
+        <script>
+            $(document).ready(function(){
+                var conn_path = 'http://' + document.domain + ':' + location.port + '/invite';
+                var socket = io.connect(conn_path);
+                socket.on('invited', function(msg) {
+                    $('#notification').html(msg.data);
+                });
+            });
+        </script>
         <script>
             $( "#clickme" ).click(function() {
                 $( "#drop" ).toggle( "slow", function() {
